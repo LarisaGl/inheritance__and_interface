@@ -6,42 +6,38 @@ echo "2. Интерфейс похож на класс, но он не може�
 
 class Main
 {
-	public $model;
+	public $name;
 	public $price;
 
-	public setModel($model)
+	public function  __construct($name, $price)
 	{
-		$this->model=$model;
-		return $this;		
-	}
-
-	public setPrice($price)
-	{
+		$this->name=$name;
 		$this->price=$price;
-		return $this;
 	}
 }
 
 class Car extends Main
 {
-	public $color;
+	public $country;
 	public $speed;
 
-	public setColor($color)
+	public function setCountry($country)
 	{
-		$this->color=$color;
+		$this->country=$country;
 		return $this;		
 	}
 
-	public setSpeed($speed)
+	public function setSpeed($speed)
 	{
 		$this->speed=$speed;
 		return $this;
 	}
 }
 
-$bmw = new Car ('BMW M3', 'blue', 350, 7000000);
-$mazda = new Car ('Mazda 3', 'white', 220, 1500000);
+$bmw = new Car ('BMW M3', 7000000);
+$bmw->setCountry('German')->setSpeed(350);
+$mazda = new Car ('Mazda 3',  1500000);
+$mazda->setCountry('Japan')->setSpeed(220);
 
 echo "<pre>";
 print_r($bmw);
@@ -50,20 +46,22 @@ echo "<pre>";
 print_r($mazda);
 echo "</pre>";
 
-class TV
+class TV extends Main
 {
 	public $size;
 
-	public function __construct($model, $size, $price)
+	public function setSize($size)
 	{
-		$this->model=$model;
 		$this->size=$size;
-		$this->price=$price;
+		return $this;		
 	}
 }
 
-$lg = new TV ('LG', 40, 35000);
-$samsung = new TV ('Samsung', 45, 50000);
+$lg = new TV ('LG', 35000);
+$lg->setSize(40);
+$samsung = new TV ('Samsung', 50000);
+$samsung->setSize(45);
+
 
 echo "<pre>";
 print_r($lg);
@@ -72,20 +70,21 @@ echo "<pre>";
 print_r($samsung);
 echo "</pre>";
 
-class Pen
+class Pen extends Main
 {
 	public $color;
 
-	public function __construct($model, $color, $price)
+	public function setColor($color)
 	{
-		$this->model=$model;
 		$this->color=$color;
-		$this->price=$price;
+		return $this;		
 	}
 }
 
-$colop = new Pen ('Colop', 'white', 30);
-$parker = new Pen ('Parker', 'black', 1000);
+$colop = new Pen ('Colop', 30);
+$colop->setColor('white');
+$parker = new Pen ('Parker',  1000);
+$parker->setColor('black');
 
 echo "<pre>";
 print_r($colop);
@@ -94,19 +93,21 @@ echo "<pre>";
 print_r($parker);
 echo "</pre>";
 
-class Duck
+class Duck extends Main
 {
 	public $weight;
 
-	public function __construct($price, $weight)
+	public function setWeight($weight)
 	{
-		$this->price=$price;
 		$this->weight=$weight;
+		return $weight;		
 	}
 }
 
-$one = new Duck ('white', 450, 1500);
-$two = new Duck ('black', 300, 1000);
+$one = new Duck ('fried', 450);
+$one->setWeight(1500);
+$two = new Duck ('braised', 300);
+$two->setWeight(1000);
 
 echo "<pre>";
 print_r($one);
@@ -115,20 +116,21 @@ echo "<pre>";
 print_r($two);
 echo "</pre>";
 
-class Product
+class Product extends Main
 {
-	public $color;
+	public $season;
 
-	public function __construct($model, $color, $price)
+	public function setSeasons($season)
 	{
-		$this->model=$model;
-		$this->color=$color;
-		$this->price=$price;
+		$this->season=$season;
+		return $season;
 	}
 }
 
-$guess = new Product ('Guess', 'blue', 15000);
-$dkny = new Product ('DKNY', 'red', 22000);
+$guess = new Product ('Guess', 15000);
+$guess->setSeasons ("2017/2018");
+$dkny = new Product ('DKNY', 22000);
+$guess->setSeasons ("2018/2019");
 
 echo "<pre>";
 print_r($guess);
